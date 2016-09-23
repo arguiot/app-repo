@@ -147,9 +147,9 @@
             var doors = ['one', 'two', 'three'];
             
             // Détection
-            if(typeof localStorage!='undefined') {
+            if(typeof(Storage) !== "undefined") {
             // Récupération de la valeur dans web storage
-            var highScore = localStorage.getItem('highScore');
+            var highScore = localStorage.highScore;
             // Vérification de la présence du compteur
             if(highScore!=null) {
             // Si oui, on convertit en nombre entier la chaîne de texte qui fut stockée
@@ -162,7 +162,7 @@
             }
             if (score > highScore) {
             highScore = score;
-            localStorage.setItem('highScore',highScore);
+            localStorage.highScore = highScore;
             }
             
             $('.score').text( 'Score: ' + score + '  -  High score: ' + highScore);
