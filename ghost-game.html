@@ -65,7 +65,7 @@
             .ghost {
                 width: 200px;
                 height: 200px;
-                background-image: url(http://1.darkroom.shortlist.com/980/9457ce230022c0fe7dfe2470f08f69e6:fb89b17743cf826586ab15a2936932c9/the-red-ghost);
+                background-image: url(the-red-ghost.png);
                 background-size: cover;
                 background-repeat: no-repeat;
             }
@@ -110,21 +110,21 @@
                 -webkit-transform: translateX(-50%);
                 transform: translateX(-50%);
             }
-
             </style>
             
-                    
-                    
-                    
-                    
-                    </head>
+            
+            
+            
+            
+            </head>
     
     <body>
         
         
         <div class="instructions">
-            <h1>JS Ghost</h1>
-            <p>Click on a door to see if there is a ghost in there, if no, your score goes up, else, it's game over. Good luck</p>
+            <h1>Ghost Game</h1>
+            <p>Clique sur une porte, si il y a un fantome vous mourrez, bonne chance!</p>
+            
         </div>
         <div class="doors">
             <div class="door one"></div>
@@ -146,10 +146,15 @@
             
             var doors = ['one', 'two', 'three'];
             
-            var highScore = 0;
+            var highScore = localStorage.getItem("highScore");
+            if(highScore == "" || highScore == null)
+            {
+            highScore = 0;
+            }
             
             if (score > highScore) {
             highScore = score;
+            localStorage.setItem("highScore", highScore)
             }
             
             $('.score').text( 'Score: ' + score + '  -  High score: ' + highScore);
@@ -205,4 +210,5 @@
             $('body').fadeOut(600).fadeIn(600);
             }
             });
+            
             </script>
