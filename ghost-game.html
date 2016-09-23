@@ -146,15 +146,23 @@
             
             var doors = ['one', 'two', 'three'];
             
-            var highScore = localStorage.getItem("highScore");
-            if(highScore == "" || highScore == null)
-            {
+            // Détection
+            if(typeof localStorage!='undefined') {
+            // Récupération de la valeur dans web storage
+            var highScore = localStorage.getItem('highScore');
+            // Vérification de la présence du compteur
+            if(highScore!=null) {
+            // Si oui, on convertit en nombre entier la chaîne de texte qui fut stockée
+            highScore = parseInt(highScore);
+            } else {
             highScore = 0;
             }
-            
+            } else {
+            alert("localStorage n'est pas supporté");
+            }
             if (score > highScore) {
             highScore = score;
-            localStorage.setItem("highScore", highScore)
+            localStorage.setItem('highScore',highScore);
             }
             
             $('.score').text( 'Score: ' + score + '  -  High score: ' + highScore);
